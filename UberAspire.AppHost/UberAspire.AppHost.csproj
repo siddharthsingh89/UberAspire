@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>49456ef5-1ea8-4a10-b184-5c1c3d0c1b57</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UberAspire.ApiService\UberAspire.ApiService.csproj" />
+    <ProjectReference Include="..\UberAspire.LocationService\UberAspire.LocationService.csproj" />
+    <ProjectReference Include="..\UberAspire.MigrationSerivce\UberAspire.MigrationSerivce.csproj" />
+    <ProjectReference Include="..\UberAspire.RideMatchingService\UberAspire.RideMatchingService.csproj" />
+    <ProjectReference Include="..\UberAspire.RideService\UberAspire.RideService.csproj" />
+    <ProjectReference Include="..\UberAspire.Web\UberAspire.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.1.0" />
+  </ItemGroup>
+
+</Project>

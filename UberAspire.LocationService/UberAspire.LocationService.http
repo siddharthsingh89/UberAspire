@@ -1,0 +1,23 @@
+@UberAspire.LocationService_HostAddress = http://localhost:5130
+
+POST {{UberAspire.LocationService_HostAddress}}/location/addlocation
+Accept: application/json
+content-Type : application/json
+
+{
+    "latitude": 37.968046,
+    "longitude": -94.420307,
+    "driverId": "at37"
+}
+###
+POST {{UberAspire.LocationService_HostAddress}}/location/getnearbydrivers
+Accept: application/json
+content-Type : application/json
+
+{
+    "lat": 32.868046,
+    "lon": -94.420307,
+    "radius": 1500.0,
+    "unit" : "km"
+}
+###

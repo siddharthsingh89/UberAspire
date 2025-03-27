@@ -1,0 +1,12 @@
+@UberAspire.RideService_HostAddress = http://localhost:5049
+
+POST {{UberAspire.RideService_HostAddress}}/api/ride/fare
+Accept: application/json
+content-Type: application/json
+
+{
+    "pickupLocation" : "Financial District",
+    "destination" : "Microsoft"
+}
+
+###
