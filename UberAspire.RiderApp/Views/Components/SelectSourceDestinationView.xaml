@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UberAspire.RiderApp.Views.Components.SelectSourceDestinationView">
+    <StackLayout>
+    <Grid   Padding="15,20"
+        ColumnSpacing="10"
+        RowSpacing="10"
+        BackgroundColor="White"
+        VerticalOptions="Start"
+        RowDefinitions="Auto, Auto, Auto"
+        ColumnDefinitions="Auto, *, Auto">
+        <Image Source="ic_back"
+              Margin="0"
+              x:Name="ic_Back"
+              HeightRequest="30"
+              WidthRequest="30"
+              Grid.Row="0"
+              Grid.Column="0">          
+        </Image>
+
+        <StackLayout Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    Padding="0,10"
+                    Spacing="0"
+                    HorizontalOptions="Center">
+            <BoxView HeightRequest="5"
+                       WidthRequest="5"
+                       CornerRadius="2.5"
+                       Color="Gray"
+                       x:Name="originView">
+          
+            </BoxView>
+            <BoxView WidthRequest="0.5"
+                       HorizontalOptions="Center"
+                       VerticalOptions="FillAndExpand"
+                       Color="Gray"/>
+            <BoxView HeightRequest="5"
+                      WidthRequest="5"
+                       Color="Gray"
+                       x:Name="destionationView">
+           
+            </BoxView>
+        </StackLayout>
+
+        <Entry Placeholder="Enter Pickup"               
+               Grid.Row="1" 
+               Grid.Column="1"
+               Text="PickupLocation"
+               x:Name="originEntry"
+               ReturnType="Search"
+               HorizontalOptions="FillAndExpand"/>
+
+        <Entry Placeholder="Where to?"            
+               Grid.Row="2"
+               Grid.Column="1"
+               Text="DestinationLocation"
+               x:Name="destinationEntry"
+               ReturnType="Search"
+               HorizontalOptions="FillAndExpand" />
+
+        <Image Source="ic_add"
+               VerticalOptions="Center"
+               HeightRequest="20"
+               WidthRequest="20"
+               Grid.Row="2"
+               Grid.Column="2"/>
+    </Grid>
+    </StackLayout>
+</ContentView>
