@@ -39,4 +39,6 @@ var rideMatchingService = builder.AddProject<Projects.UberAspire_RideMatchingSer
     .WithReference(locationService)
     .WaitFor(locationService);
 
+builder.AddProject<Projects.UberAspire_NotificationService>("uberaspire-notificationservice");
+
 builder.Build().Run();

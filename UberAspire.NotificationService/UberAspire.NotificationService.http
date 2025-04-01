@@ -1,0 +1,6 @@
+@UberAspire.NotificationService_HostAddress = http://localhost:5002
+
+GET {{UberAspire.NotificationService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

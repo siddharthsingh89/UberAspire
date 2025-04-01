@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberAspire.RideMatchingServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberAspire.RiderApp", "UberAspire.RiderApp\UberAspire.RiderApp.csproj", "{14B8ACC8-4F76-4BD4-9C2C-1CE657579267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberAspire.NotificationService", "UberAspire.NotificationService\UberAspire.NotificationService.csproj", "{D07AB5D5-3D88-3E67-5591-C9E5D2BBCA56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{14B8ACC8-4F76-4BD4-9C2C-1CE657579267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B8ACC8-4F76-4BD4-9C2C-1CE657579267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14B8ACC8-4F76-4BD4-9C2C-1CE657579267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D07AB5D5-3D88-3E67-5591-C9E5D2BBCA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D07AB5D5-3D88-3E67-5591-C9E5D2BBCA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D07AB5D5-3D88-3E67-5591-C9E5D2BBCA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D07AB5D5-3D88-3E67-5591-C9E5D2BBCA56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
