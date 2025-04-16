@@ -73,7 +73,7 @@ public class Worker(
                riderId: System.Guid.NewGuid().ToString(),
                source: "TestSeed Source Location",
                destination: "TestSeed Destination",
-               eta: DateTimeOffset.Now,
+               eta: DateTimeOffset.UtcNow,
                amount: 10.00M
            );
 

@@ -13,7 +13,7 @@ namespace UberAspire.RideService.Services
             _context = context;
         }       
 
-        public async Task<Fare> GetFareByIdAsync(string fareId)
+        public async Task<Fare> GetFareByIdAsync(Guid fareId)
         {
             return await _context.Fares.FindAsync(fareId);
         }

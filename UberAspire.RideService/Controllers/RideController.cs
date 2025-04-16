@@ -38,14 +38,14 @@ namespace UberAspire.RideService.Controllers
                 riderId: System.Guid.NewGuid().ToString(),
                 source:  fareInputRequest.PickupLocation,
                 destination:  fareInputRequest.Destination,
-                eta: DateTimeOffset.Now,
+                eta: DateTimeOffset.UtcNow,
                 amount: 10.00M                
             );
             //fix the models
            // string result = await _mappingService.GetETAForSourceAndDestination(fare.Source, fare.Destination);
             //string finalPrice = await _pricingService.GetEstimatedFare();
             await _fareRepository.AddFareAsync(fare);
-            var fareFromDb = await _fareRepository.GetFareByIdAsync(fare.Id.ToString());
+            var fareFromDb = await _fareRepository.GetFareByIdAsync(fare.Id);
             return Ok(fareFromDb);
         }
 
@@ -59,7 +59,7 @@ namespace UberAspire.RideService.Controllers
             }
 
             
-            var fareFromDb = await _fareRepository.GetFareByIdAsync(rideRequest.FareId);
+            var fareFromDb = await _fareRepository.GetFareByIdAsync(new Guid(rideRequest.FareId));
             //Call RideMatching service to get available drivers
             // This should be async polling pattern
             return Ok(fareFromDb);

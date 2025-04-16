@@ -7,7 +7,7 @@ namespace UberAspire.RideService.Services
 {
     public interface IFareRepository
     {      
-        Task<Fare> GetFareByIdAsync(string fareId);
+        Task<Fare> GetFareByIdAsync(Guid fareId);
         public Task AddFareAsync(Fare fare);
         public Task UpdateFareAsync(Fare fare);
     }    

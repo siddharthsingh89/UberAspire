@@ -12,7 +12,8 @@ public class Program
         builder.AddServiceDefaults();
 
         // Add services to the container.
-        builder.AddSqlServerDbContext<RideDbContext>(connectionName: "ridedb");
+        //builder.AddSqlServerDbContext<RideDbContext>(connectionName: "ridedb");
+        builder.AddNpgsqlDbContext<RideDbContext>("ridedb");
         builder.Services.AddControllers();
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();

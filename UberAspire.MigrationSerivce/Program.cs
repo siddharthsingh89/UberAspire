@@ -14,20 +14,21 @@ public class Program
 
         builder.Services.AddOpenTelemetry()
             .WithTracing(tracing => tracing.AddSource(Worker.ActivitySourceName));
-        //builder.AddNpgsqlDbContext<RideDbContext>(connectionName: "postgresdb");
+        builder.AddNpgsqlDbContext<RideDbContext>("ridedb");
 
-        builder.Services.AddDbContextPool<RideDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("ridedb"), sqlOptions => {
-            sqlOptions.MigrationsAssembly("UberAspire.MigrationSerivce");
-            sqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
-                    null
-                );
-            }
-    )
-);
+        /*builder.Services.AddDbContextPool<RideDbContext>(options =>
+            options.UseSqlServer(
+            builder.Configuration.GetConnectionString("ridedb"), sqlOptions =>
+            {
+                sqlOptions.MigrationsAssembly("UberAspire.MigrationSerivce");
+                sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 10,
+                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                        null
+                    );
+                }
+            )
+        );*/
         var host = builder.Build();
         host.Run();
     }

@@ -1,22 +1,22 @@
 using Aspire.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
-//var postgres = builder.AddPostgres("postgres");
-//var postgresdb = postgres.AddDatabase("ridedb");
+var postgres = builder.AddPostgres("postgres");
+var postgresdb = postgres.AddDatabase("ridedb");
 
 
-var sql = builder.AddSqlServer("sql")
-                 .WithLifetime(ContainerLifetime.Persistent);
+//var sql = builder.AddSqlServer("sql")
+                // .WithLifetime(ContainerLifetime.Persistent);
 
-var sqldb = sql.AddDatabase("ridedb");
+//var sqldb = sql.AddDatabase("ridedb");
 
 var locationCache = builder.AddRedis("locationstore");
 
 var distributedLockStore = builder.AddRedis("distributedlockstore");
 
 var migrationService = builder.AddProject<Projects.UberAspire_MigrationSerivce>("uberaspire-migrationserivce")
-    .WithReference(sqldb)
-    .WaitFor(sqldb);
+    .WithReference(postgresdb)
+    .WaitFor(postgresdb);
 
 var apiService = builder.AddProject<Projects.UberAspire_ApiService>("apiservice");
 
@@ -27,7 +27,7 @@ builder.AddProject<Projects.UberAspire_Web>("webfrontend")
 
 var rideService = builder.AddProject<Projects.UberAspire_RideService>("uberaspire-rideservice")
              .WithExternalHttpEndpoints()
-             .WithReference(sqldb)
+             .WithReference(postgresdb)
              .WaitForCompletion(migrationService);
 
 var locationService = builder.AddProject<Projects.UberAspire_LocationService>("uberaspire-locationservice")

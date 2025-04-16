@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using UberAspire.RideModel.Persistence;
@@ -11,9 +12,11 @@ using UberAspire.RideModel.Persistence;
 namespace UberAspire.RideModel.Migrations
 {
     [DbContext(typeof(RideDbContext))]
-    partial class RideDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250416101526_AgainCreated")]
+    partial class AgainCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
