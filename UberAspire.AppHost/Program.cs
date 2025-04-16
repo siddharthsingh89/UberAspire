@@ -12,6 +12,9 @@ var postgresdb = postgres.AddDatabase("ridedb");
 
 var locationCache = builder.AddRedis("locationstore");
 
+var kafka = builder.AddKafka("ridematching-queue")
+                    .WithKafkaUI();
+
 var distributedLockStore = builder.AddRedis("distributedlockstore");
 
 var migrationService = builder.AddProject<Projects.UberAspire_MigrationSerivce>("uberaspire-migrationserivce")
@@ -28,6 +31,7 @@ builder.AddProject<Projects.UberAspire_Web>("webfrontend")
 var rideService = builder.AddProject<Projects.UberAspire_RideService>("uberaspire-rideservice")
              .WithExternalHttpEndpoints()
              .WithReference(postgresdb)
+             .WithReference(kafka)
              .WaitForCompletion(migrationService);
 
 var locationService = builder.AddProject<Projects.UberAspire_LocationService>("uberaspire-locationservice")
@@ -37,6 +41,7 @@ var locationService = builder.AddProject<Projects.UberAspire_LocationService>("u
 var rideMatchingService = builder.AddProject<Projects.UberAspire_RideMatchingService>("uberaspire-ridematchingservice")
     .WithReference(distributedLockStore)
     .WithReference(locationService)
+    .WithReference(kafka)
     .WaitFor(locationService);
 
 builder.AddProject<Projects.UberAspire_NotificationService>("uberaspire-notificationservice");

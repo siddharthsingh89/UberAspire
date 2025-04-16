@@ -1,4 +1,4 @@
-﻿namespace UberAspire.RideService.Services
+﻿namespace UberAspire.RideService.Services.Fares
 {
     public interface IPricingService
     {

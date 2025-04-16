@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using UberAspire.RideModel;
 using UberAspire.RideModel.Models;
-namespace UberAspire.RideService.Services
+namespace UberAspire.RideService.Services.Fares
 {
     public interface IFareRepository
     {      

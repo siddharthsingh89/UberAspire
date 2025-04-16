@@ -1,6 +1,7 @@
 
 using UberAspire.RideModel.Persistence;
-using UberAspire.RideService.Services;
+using UberAspire.RideService.Services.Fares;
+using UberAspire.RideService.Services.Mapping;
 
 namespace UberAspire.RideService;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UberAspire.RideModel.Models;
 using UberAspire.RideService.ClientModels;
-using UberAspire.RideService.Services;
+using UberAspire.RideService.Services.RideCore;
 
 namespace UberAspire.RideService.Controllers
 {
@@ -11,58 +11,27 @@ namespace UberAspire.RideService.Controllers
     {
        
         private readonly ILogger<RideController> _logger;
-        private readonly IFareRepository _fareRepository;
-        private readonly IMappingService _mappingService;
-        private readonly IPricingService _pricingService;
+        private readonly IRideServices __rideService;
         public RideController(ILogger<RideController> logger,
-                            IFareRepository fareRepository,
-                            IMappingService mappingService,
-                            IPricingService pricingService)
+                            IRideServices rideService)
         {
             _logger = logger;
-            _fareRepository = fareRepository;
-            _mappingService = mappingService;
-            _pricingService = pricingService;
+           __rideService = rideService;
         }
 
         [HttpPost("Fare")]
         public async Task<IActionResult> GetFare([Bind] FareInputRequest fareInputRequest)
-        {
-            if(fareInputRequest==null || string.IsNullOrWhiteSpace(fareInputRequest.PickupLocation) 
-                || string.IsNullOrEmpty(fareInputRequest.Destination))
-            {
-                return BadRequest();
-            }
-
-            var fare = Fare.Create(
-                riderId: System.Guid.NewGuid().ToString(),
-                source:  fareInputRequest.PickupLocation,
-                destination:  fareInputRequest.Destination,
-                eta: DateTimeOffset.UtcNow,
-                amount: 10.00M                
-            );
-            //fix the models
-           // string result = await _mappingService.GetETAForSourceAndDestination(fare.Source, fare.Destination);
-            //string finalPrice = await _pricingService.GetEstimatedFare();
-            await _fareRepository.AddFareAsync(fare);
-            var fareFromDb = await _fareRepository.GetFareByIdAsync(fare.Id);
-            return Ok(fareFromDb);
+        {           
+            var fareResponse = await __rideService.GetFareAsync(fareInputRequest);
+            return Ok(fareResponse);
         }
 
 
         [HttpPost]
         public async Task<IActionResult> RequestRide([Bind] RideRequest rideRequest)
-        {
-            if (rideRequest == null || string.IsNullOrWhiteSpace(rideRequest.FareId.ToString()))
-            {
-                return BadRequest();
-            }
-
-            
-            var fareFromDb = await _fareRepository.GetFareByIdAsync(new Guid(rideRequest.FareId));
-            //Call RideMatching service to get available drivers
-            // This should be async polling pattern
-            return Ok(fareFromDb);
+        {           
+           var response = __rideService.RequestRideAsync(rideRequest);           
+            return Ok(response);
         }
     }
 }

@@ -2,7 +2,7 @@
 using UberAspire.RideModel.Models;
 using UberAspire.RideModel.Persistence;
 
-namespace UberAspire.RideService.Services
+namespace UberAspire.RideService.Services.Fares
 {
     public class FareRepository : IFareRepository
     {

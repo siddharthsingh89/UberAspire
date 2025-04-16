@@ -3,7 +3,7 @@ using Azure.Maps.Routing;
 using Azure.Core.GeoJson;
 using Azure.Maps.Routing.Models;
 
-namespace UberAspire.RideService.Services
+namespace UberAspire.RideService.Services.Mapping
 {
     public class AzureMappingService : IMappingService
     {
