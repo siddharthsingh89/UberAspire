@@ -3,9 +3,9 @@ using UberAspire.RideService.ClientModels;
 
 namespace UberAspire.RideService.Services.RideCore
 {
-    public interface IRideServices
+    public interface IRideService
     {
         Task<Fare> GetFareAsync(FareInputRequest fareInputRequest);
-        Task<Ride> RequestRideAsync(RideRequest rideRequest);
+        Task RequestRideAsync(RideRequest rideRequest);
     }
 }

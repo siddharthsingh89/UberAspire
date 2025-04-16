@@ -11,9 +11,9 @@ namespace UberAspire.RideService.Controllers
     {
        
         private readonly ILogger<RideController> _logger;
-        private readonly IRideServices __rideService;
+        private readonly IRideService __rideService;
         public RideController(ILogger<RideController> logger,
-                            IRideServices rideService)
+                            IRideService rideService)
         {
             _logger = logger;
            __rideService = rideService;
