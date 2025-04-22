@@ -1,7 +1,7 @@
 # UberAspire
 UberAspire is an end-2-end implementation of a ride sharing App backend, like Uber. The services are implemented using ASP.NET Core Web Apis and the frontend is implemented using .NET MAUI and React.
 The backend is implemented using a microservice architecture, with each microservice implemented as a separate project.
-
+Read more about it at my [blog](https://www.sidy.me/blog/uberaspire-implement-ride-sharing-backend-app)
 
 ## Using the Code
 The project is created using .NET Aspire template  which is a opinionated way of building observable services and applications. Just clone the project and hit F5 to run the project.
